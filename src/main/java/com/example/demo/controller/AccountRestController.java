@@ -1,5 +1,6 @@
-package com.example.demo.controllers;
+package com.example.demo.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,10 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountRestController {
 	
 	
-	//PreAuthorize("permitAll()")
+	@PreAuthorize("permitAll()")
 	@PostMapping("/signup")
 	public void signupAccount() {
 	}
-	
 	
 }
