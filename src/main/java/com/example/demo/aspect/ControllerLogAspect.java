@@ -1,4 +1,4 @@
-package com.example.demo.aspects;
+package com.example.demo.aspect;
 
 import java.util.HashMap;
 import java.util.Map;
