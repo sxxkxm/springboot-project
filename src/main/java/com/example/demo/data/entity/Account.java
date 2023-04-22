@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.example.demo.data.dto.AccountDto.AccountCreateDto;
 import com.example.demo.data.entity.common.DefaultEntity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.UUIDGenerator;
@@ -46,6 +47,15 @@ public class Account extends DefaultEntity {
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+	}
+
+	public AccountCreateDto toCreateDto() {
+		return AccountCreateDto.builder()
+				  	     	   .email(email)
+				  	     	   .password(password)
+				  	     	   .firstName(firstName)
+				  	     	   .lastName(lastName)
+				  	     	   .build();
 	}
 	
 }
