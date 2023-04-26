@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,10 +17,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SecurityConfiguration {
 	
 	private final ObjectMapper objectMapper;
+	private final CorsFilterConfiguration corsFilterConfiguration;
 	
 	@Autowired
-	public SecurityConfiguration(ObjectMapper objectMapper) {
+	public SecurityConfiguration(ObjectMapper objectMapper, CorsFilterConfiguration corsFilterConfiguration) {
 		this.objectMapper = objectMapper;
+		this.corsFilterConfiguration = corsFilterConfiguration;
 	}
 
 	@Bean
@@ -42,5 +45,18 @@ public class SecurityConfiguration {
 				   .authorizeRequests(authroize -> authroize.anyRequest().permitAll())
 				   .build();
 	}
+	
+	public class CustomDsl extends AbstractHttpConfigurer<CustomDsl, HttpSecurity> {
+		
+	    /**
+		 *  @param HttpSecurity http
+		 *  @throws Exception
+		 */
+		@Override
+		public void configure(HttpSecurity http) throws Exception {
+			http.addFilter(corsFilterConfiguration.corsFilter());
+		}
+		
+	}	
 
 }
