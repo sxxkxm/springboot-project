@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.data.dto.AccountDto.AccountCreateDto;
+import com.example.demo.data.dto.AccountDto.AccountSelectDto;
+import com.example.demo.data.dto.AccountDto.AccountSignupDto;
 
 public interface AccountService {
-	AccountCreateDto saveAccount(AccountCreateDto accountCreateDto);
+	AccountSelectDto signupAccount(AccountSignupDto accountSignupDto);
 }

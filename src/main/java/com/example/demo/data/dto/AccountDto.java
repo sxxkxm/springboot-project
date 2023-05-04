@@ -1,5 +1,7 @@
 package com.example.demo.data.dto;
 
+import java.util.Set;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -7,6 +9,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.example.demo.data.entity.Account;
+import com.example.demo.data.entity.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +24,7 @@ public class AccountDto {
 	@Setter
 	@NoArgsConstructor
 	@AllArgsConstructor
-	public static class AccountCreateDto {
+	public static class AccountSignupDto {
 		
 		@NotNull
 		@NotEmpty
@@ -47,13 +50,28 @@ public class AccountDto {
 		
 		public Account toEntity() {
 			return Account.builder()
-							   	.email(email)
-							   	.password(password)
-							   	.firstName(firstName)
-							   	.lastName(lastName)
-							   	.build();
+						  .email(email)
+				   	   	  .password(password)
+					   	  .firstName(firstName)
+						  .lastName(lastName)
+					      .build();
 		}
 		
 	}
+	
+	@Builder
+	@Getter
+	@Setter
+	@NoArgsConstructor
+	@AllArgsConstructor
+	public static class AccountSelectDto {
+		
+		private String id;
+		private String email;
+		private String firstName;
+		private String lastName;
+		private Set<Role> roles;
+		
+	}	
 	
 }

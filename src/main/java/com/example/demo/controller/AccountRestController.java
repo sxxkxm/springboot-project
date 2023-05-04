@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.data.dto.AccountDto.AccountCreateDto;
+import com.example.demo.data.dto.AccountDto.AccountSelectDto;
+import com.example.demo.data.dto.AccountDto.AccountSignupDto;
 import com.example.demo.service.AccountService;
 
 
@@ -28,8 +29,8 @@ public class AccountRestController {
 	
 	@PreAuthorize("permitAll()")
 	@PostMapping("/signup")
-	public ResponseEntity<AccountCreateDto> signupAccount(@Valid @RequestBody AccountCreateDto accountCreateDto) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(accountService.saveAccount(accountCreateDto));
+	public ResponseEntity<AccountSelectDto> signupAccount(@Valid @RequestBody AccountSignupDto accountSignupDto) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(accountService.signupAccount(accountSignupDto));
 	}
 	
 }

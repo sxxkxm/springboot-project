@@ -17,6 +17,10 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * @author Soo Kim
+ * @version 1.0
+ */
 @Aspect
 @Component
 public class ControllerLogAspect {
@@ -31,8 +35,13 @@ public class ControllerLogAspect {
 	}
 	
 	/**
-	 * 	Pointcut to print logs.
-	 */
+	 *  Pointcut to print logs.
+	 *  
+	 *  @param AccountCreateDto
+	 *  @exception exception test
+	 *  @throws throws test
+	 *  @return ResponseEntity
+	 */	
     @Pointcut("execution(* com.talhwancompany.thcspringboot.controller..*.*(..))"
     		+ "execution(* com.talhwancompany.thcspringboot.service..*.*(..)) || "
     		+ "execution(* com.talhwancompany.thcspringboot.data.dao..*.*(..)) || "
