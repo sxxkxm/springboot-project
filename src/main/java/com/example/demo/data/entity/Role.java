@@ -27,22 +27,22 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @JsonIdentityInfo(generator = UUIDGenerator.class, property = "id")
-@Table(name = "roleType")
+@Table(name = "role")
 @Entity
 public class Role extends DefaultEntity {
 	
 	@Column(length = 191, nullable = false, unique = true)
-	private String typeName;
+	private String name;
 	
-	@OneToMany(mappedBy = "roleType", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	private List<AccountRole> tbuserRoleType = new ArrayList<>();
+	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<AccountRole> accountRole = new ArrayList<>();
 	
 	@Builder
 	public Role(String id, LocalDateTime createdAt, String createdBy, LocalDateTime updatedAt, String updatedBy, 
-				String typeName, List<AccountRole> tbuserRoleType) {
+				String name, List<AccountRole> accountRole) {
 		super(id, createdAt, createdBy, updatedAt, updatedBy);
-		this.typeName = typeName;
-		this.tbuserRoleType = tbuserRoleType;
+		this.name = name;
+		this.accountRole = accountRole;
 	}
 	
 //	public RoleTypeCreateDto toCreateDto() {

@@ -1,0 +1,10 @@
+com.example.demo
+com.example.demo.aspect
+com.example.demo.configuration
+com.example.demo.controller
+com.example.demo.data.dto
+com.example.demo.data.entity
+com.example.demo.data.entity.common
+com.example.demo.data.repository
+com.example.demo.service
+com.example.demo.service.impl
